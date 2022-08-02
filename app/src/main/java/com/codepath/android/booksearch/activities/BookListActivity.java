@@ -69,11 +69,12 @@ public class BookListActivity extends AppCompatActivity {
                 // see https://guides.codepath.org/android/Using-the-RecyclerView#attaching-click-handlers-using-listeners for setting up click listeners
 
                 // Create Intent to start BookDetailActivity
-                Intent i = new Intent(context, BookDetailActivity.class);
+                Intent i = new Intent(BookListActivity.this, BookDetailActivity.class);
                 // Get Book at the given position
                 Book book = abooks.get(position);
                 // Pass the book into details activity using extras
                 i.putExtra("book", Parcels.wrap(book));
+                startActivity(i);
                 // see http://guides.codepath.org/android/Using-Intents-to-Create-Flows
             }
         });
