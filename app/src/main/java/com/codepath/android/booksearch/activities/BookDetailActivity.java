@@ -2,6 +2,8 @@ package com.codepath.android.booksearch.activities;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -23,6 +25,10 @@ public class BookDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main );
+        setSupportActionBar(toolbar);
+
 
         // Fetch views
         ivBookCover = (ImageView) findViewById(R.id.ivBookCover);
