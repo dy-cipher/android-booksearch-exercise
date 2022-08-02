@@ -13,6 +13,11 @@ public class Book {
     private String openLibraryId;
     private String author;
     private String title;
+//    private String publisher_date;
+
+//    public String getPublisherDate() {
+//        return publisher_date;
+//    }
 
     public String getOpenLibraryId() {
         return openLibraryId;
@@ -45,6 +50,7 @@ public class Book {
             }
             book.title = jsonObject.has("title_suggest") ? jsonObject.getString("title_suggest") : "";
             book.author = getAuthor(jsonObject);
+//            book.publisher_date = jsonObject.getString("publish_date");
         } catch (JSONException e) {
             e.printStackTrace();
             return null;

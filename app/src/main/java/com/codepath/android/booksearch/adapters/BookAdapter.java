@@ -39,6 +39,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         public ImageView ivCover;
         public TextView tvTitle;
         public TextView tvAuthor;
+//        public TextView tvPublisher;
 
         public ViewHolder(final View itemView, final OnItemClickListener clickListener) {
             // Stores the itemView in a public final member variable that can be used
@@ -48,6 +49,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             ivCover = (ImageView)itemView.findViewById(R.id.ivBookCover);
             tvTitle = (TextView)itemView.findViewById(R.id.tvTitle);
             tvAuthor = (TextView)itemView.findViewById(R.id.tvAuthor);
+//            tvPublisher = (TextView)itemView.findViewById(R.id.tvPublisher);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,6 +89,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         // Populate data into the template view using the data object
         viewHolder.tvTitle.setText(book.getTitle());
         viewHolder.tvAuthor.setText(book.getAuthor());
+//        viewHolder.tvPublisher.setText(book.getPublisherDate());
 
         Glide.with(getContext())
                 .load(Uri.parse(book.getCoverUrl()))

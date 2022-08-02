@@ -1,6 +1,8 @@
 package com.codepath.android.booksearch.activities;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -20,6 +22,7 @@ public class BookDetailActivity extends AppCompatActivity {
     private ImageView ivBookCover;
     private TextView tvTitle;
     private TextView tvAuthor;
+//    private TextView tvPublisher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +30,18 @@ public class BookDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_detail);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main );
-        setSupportActionBar(toolbar);
+//        ActionBar actionBar = getSupportActionBar();
+//        String title = actionBar.getTitle().toString();
+//        getSupportActionBar().setTitle(title);
+
+
 
 
         // Fetch views
         ivBookCover = (ImageView) findViewById(R.id.ivBookCover);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvAuthor = (TextView) findViewById(R.id.tvAuthor);
+//        tvPublisher = (TextView) findViewById(R.id.tvPublisher);
 
         // Extract book object from intent extras
         Book book = Parcels.unwrap(getIntent().getParcelableExtra("book"));
@@ -44,11 +52,16 @@ public class BookDetailActivity extends AppCompatActivity {
 
         tvTitle.setText(book.getTitle());
         tvAuthor.setText(book.getAuthor());
+//        tvPublisher.setText(book.getPublisherDate());
+
 
         // Checkpoint #5
         // Reuse the Toolbar previously used in the detailed activity by referring to this guide
         // Follow using a Toolbar guide to set the Toolbar as the ActionBar.
+        setSupportActionBar(toolbar);
         // Change activity title to reflect the book title by referring to the Configuring The ActionBar guide.
+        getSupportActionBar().setTitle(book.getTitle());
+
         // (Bonus) Get additional book information like publisher and publish_year from the Books API and display in details view.
     }
 
