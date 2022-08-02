@@ -2,9 +2,10 @@ package com.codepath.android.booksearch.activities;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ActionProvider;
+import androidx.core.view.MenuItemCompat;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,13 +16,14 @@ import com.bumptech.glide.Glide;
 import com.codepath.android.booksearch.R;
 import com.codepath.android.booksearch.models.Book;
 
-import org.parceler.Parcel;
 import org.parceler.Parcels;
 
 public class BookDetailActivity extends AppCompatActivity {
     private ImageView ivBookCover;
     private TextView tvTitle;
     private TextView tvAuthor;
+    private ActionProvider shareActionProvider;
+
 //    private TextView tvPublisher;
 
     @Override
@@ -72,6 +74,8 @@ public class BookDetailActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_book_detail, menu);
         // Checkpoint #6
         // Add Share Intent
+        MenuItem item = menu.findItem(R.id.menu_item_share);
+        shareActionProvider = MenuItemCompat.getActionProvider(item);
         // see http://guides.codepath.org/android/Sharing-Content-with-Intents#shareactionprovider
         // (Bonus) Share book title and cover image using the same intent.
         return true;
