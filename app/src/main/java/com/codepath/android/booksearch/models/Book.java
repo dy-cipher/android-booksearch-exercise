@@ -13,11 +13,11 @@ public class Book {
     private String openLibraryId;
     private String author;
     private String title;
-//    private String publisher_date;
+    private String publish_date;
 
-//    public String getPublisherDate() {
-//        return publisher_date;
-//    }
+    public String getPublish_date() {
+        return publish_date;
+    }
 
     public String getOpenLibraryId() {
         return openLibraryId;
@@ -50,7 +50,7 @@ public class Book {
             }
             book.title = jsonObject.has("title_suggest") ? jsonObject.getString("title_suggest") : "";
             book.author = getAuthor(jsonObject);
-//            book.publisher_date = jsonObject.getString("publish_date");
+            book.publish_date = getPublish_date(jsonObject);
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -69,6 +69,16 @@ public class Book {
                 authorStrings[i] = authors.getString(i);
             }
             return TextUtils.join(", ", authorStrings);
+        } catch (JSONException e) {
+            return "";
+        }
+    }
+
+    private static String getPublish_date(final JSONObject jsonObject) {
+        try {
+            final JSONArray pdate = jsonObject.getJSONArray("publish_date");
+            int numAuthors = pdate.length();
+            return pdate.getString(numAuthors - 1);
         } catch (JSONException e) {
             return "";
         }
